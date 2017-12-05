@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.obsidian.tcsp.dao.UserRoutepointScoreMapper">
   <resultMap id="BaseResultMap" type="org.obsidian.tcsp.model.UserRoutepointScore">
-    <result column="userId" jdbcType="INTEGER" property="userid" />
-    <result column="routePointId" jdbcType="INTEGER" property="routepointid" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="routepoint_id" jdbcType="INTEGER" property="routepointId" />
     <result column="score" jdbcType="INTEGER" property="score" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    userId, routePointId, score
+    user_id, routepoint_id, score
   </sql>
   <select id="selectByExample" parameterType="org.obsidian.tcsp.model.UserRoutepointScoreExample" resultMap="BaseResultMap">
     select
@@ -89,30 +89,30 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.UserRoutepointScore">
-    insert into user_routepoint_score (userId, routePointId, score
+    insert into user_routepoint_score (user_id, routepoint_id, score
       )
-    values (#{userid,jdbcType=INTEGER}, #{routepointid,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}
+    values (#{userId,jdbcType=INTEGER}, #{routepointId,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.obsidian.tcsp.model.UserRoutepointScore">
     insert into user_routepoint_score
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        userId,
+      <if test="userId != null">
+        user_id,
       </if>
-      <if test="routepointid != null">
-        routePointId,
+      <if test="routepointId != null">
+        routepoint_id,
       </if>
       <if test="score != null">
         score,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
-      <if test="routepointid != null">
-        #{routepointid,jdbcType=INTEGER},
+      <if test="routepointId != null">
+        #{routepointId,jdbcType=INTEGER},
       </if>
       <if test="score != null">
         #{score,jdbcType=INTEGER},
@@ -128,11 +128,11 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user_routepoint_score
     <set>
-      <if test="record.userid != null">
-        userId = #{record.userid,jdbcType=INTEGER},
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.routepointid != null">
-        routePointId = #{record.routepointid,jdbcType=INTEGER},
+      <if test="record.routepointId != null">
+        routepoint_id = #{record.routepointId,jdbcType=INTEGER},
       </if>
       <if test="record.score != null">
         score = #{record.score,jdbcType=INTEGER},
@@ -144,8 +144,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user_routepoint_score
-    set userId = #{record.userid,jdbcType=INTEGER},
-      routePointId = #{record.routepointid,jdbcType=INTEGER},
+    set user_id = #{record.userId,jdbcType=INTEGER},
+      routepoint_id = #{record.routepointId,jdbcType=INTEGER},
       score = #{record.score,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

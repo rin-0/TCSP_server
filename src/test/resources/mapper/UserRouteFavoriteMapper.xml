@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.obsidian.tcsp.dao.UserRouteFavoriteMapper">
   <resultMap id="BaseResultMap" type="org.obsidian.tcsp.model.UserRouteFavorite">
-    <result column="userId" jdbcType="INTEGER" property="userid" />
-    <result column="routeId" jdbcType="INTEGER" property="routeid" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="route_id" jdbcType="INTEGER" property="routeId" />
+    <result column="time" jdbcType="BIGINT" property="time" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    userId, routeId
+    user_id, route_id, time
   </sql>
   <select id="selectByExample" parameterType="org.obsidian.tcsp.model.UserRouteFavoriteExample" resultMap="BaseResultMap">
     select
@@ -88,25 +89,33 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.UserRouteFavorite">
-    insert into user_route_favorite (userId, routeId)
-    values (#{userid,jdbcType=INTEGER}, #{routeid,jdbcType=INTEGER})
+    insert into user_route_favorite (user_id, route_id, time
+      )
+    values (#{userId,jdbcType=INTEGER}, #{routeId,jdbcType=INTEGER}, #{time,jdbcType=BIGINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.obsidian.tcsp.model.UserRouteFavorite">
     insert into user_route_favorite
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        userId,
+      <if test="userId != null">
+        user_id,
       </if>
-      <if test="routeid != null">
-        routeId,
+      <if test="routeId != null">
+        route_id,
+      </if>
+      <if test="time != null">
+        time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
-      <if test="routeid != null">
-        #{routeid,jdbcType=INTEGER},
+      <if test="routeId != null">
+        #{routeId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -119,11 +128,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user_route_favorite
     <set>
-      <if test="record.userid != null">
-        userId = #{record.userid,jdbcType=INTEGER},
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.routeid != null">
-        routeId = #{record.routeid,jdbcType=INTEGER},
+      <if test="record.routeId != null">
+        route_id = #{record.routeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null">
+        time = #{record.time,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -132,10 +144,17 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user_route_favorite
-    set userId = #{record.userid,jdbcType=INTEGER},
-      routeId = #{record.routeid,jdbcType=INTEGER}
+    set user_id = #{record.userId,jdbcType=INTEGER},
+      route_id = #{record.routeId,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  
+  <!--Rin-->
+  <select id="selectFavoriteRoutesByUserId" resultType="org.obsidian.tcsp.vo.FavoriteRoute">
+SELECT route.id,route.name,route.time,route.cover_pic FROM route,user_route_favorite
+WHERE route.id=user_route_favorite.route_id AND user_route_favorite.user_id=#{userId}
+  </select>
 </mapper>

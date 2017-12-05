@@ -3,7 +3,7 @@
 <mapper namespace="org.obsidian.tcsp.dao.UserMapper">
   <resultMap id="BaseResultMap" type="org.obsidian.tcsp.model.User">
     <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="tel" jdbcType="VARCHAR" property="tel" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userName, password, tel, email
+    id, user_name, password, tel, email
   </sql>
   <select id="selectByExample" parameterType="org.obsidian.tcsp.model.UserExample" resultMap="BaseResultMap">
     select
@@ -91,9 +91,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.User">
-    insert into user (id, userName, password, 
+    insert into user (id, user_name, password, 
       tel, email)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.obsidian.tcsp.model.User">
@@ -102,8 +102,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="username != null">
-        userName,
+      <if test="userName != null">
+        user_name,
       </if>
       <if test="password != null">
         password,
@@ -119,8 +119,8 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
@@ -145,8 +145,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.username != null">
-        userName = #{record.username,jdbcType=VARCHAR},
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
@@ -165,7 +165,7 @@
   <update id="updateByExample" parameterType="map">
     update user
     set id = #{record.id,jdbcType=INTEGER},
-      userName = #{record.username,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR}

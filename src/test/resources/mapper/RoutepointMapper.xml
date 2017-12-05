@@ -4,10 +4,13 @@
   <resultMap id="BaseResultMap" type="org.obsidian.tcsp.model.Routepoint">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="index" jdbcType="INTEGER" property="index" />
-    <result column="routeId" jdbcType="INTEGER" property="routeid" />
+    <result column="route_id" jdbcType="INTEGER" property="routeId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="longitude" jdbcType="DOUBLE" property="longitude" />
     <result column="latitude" jdbcType="DOUBLE" property="latitude" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="BaseResultMapEx" type="org.obsidian.tcsp.vo.RoutepointEx">
+    <result column="score" jdbcType="DOUBLE" property="score" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.obsidian.tcsp.model.Routepoint">
     <result column="feel" jdbcType="LONGVARCHAR" property="feel" />
@@ -71,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, index, routeId, name, longitude, latitude
+    id, index, route_id, name, longitude, latitude
   </sql>
   <sql id="Blob_Column_List">
     feel
@@ -115,10 +118,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.Routepoint">
-    insert into routepoint (id, index, routeId, 
+    insert into routepoint (id, index, route_id, 
       name, longitude, latitude, 
       feel)
-    values (#{id,jdbcType=INTEGER}, #{index,jdbcType=INTEGER}, #{routeid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{index,jdbcType=INTEGER}, #{routeId,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, 
       #{feel,jdbcType=LONGVARCHAR})
   </insert>
@@ -131,8 +134,8 @@
       <if test="index != null">
         index,
       </if>
-      <if test="routeid != null">
-        routeId,
+      <if test="routeId != null">
+        route_id,
       </if>
       <if test="name != null">
         name,
@@ -154,8 +157,8 @@
       <if test="index != null">
         #{index,jdbcType=INTEGER},
       </if>
-      <if test="routeid != null">
-        #{routeid,jdbcType=INTEGER},
+      <if test="routeId != null">
+        #{routeId,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -186,8 +189,8 @@
       <if test="record.index != null">
         index = #{record.index,jdbcType=INTEGER},
       </if>
-      <if test="record.routeid != null">
-        routeId = #{record.routeid,jdbcType=INTEGER},
+      <if test="record.routeId != null">
+        route_id = #{record.routeId,jdbcType=INTEGER},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -210,7 +213,7 @@
     update routepoint
     set id = #{record.id,jdbcType=INTEGER},
       index = #{record.index,jdbcType=INTEGER},
-      routeId = #{record.routeid,jdbcType=INTEGER},
+      route_id = #{record.routeId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       longitude = #{record.longitude,jdbcType=DOUBLE},
       latitude = #{record.latitude,jdbcType=DOUBLE},
@@ -223,7 +226,7 @@
     update routepoint
     set id = #{record.id,jdbcType=INTEGER},
       index = #{record.index,jdbcType=INTEGER},
-      routeId = #{record.routeid,jdbcType=INTEGER},
+      route_id = #{record.routeId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       longitude = #{record.longitude,jdbcType=DOUBLE},
       latitude = #{record.latitude,jdbcType=DOUBLE}
@@ -231,4 +234,11 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
+  <!--Rin-->
+  <select id="selectByPositionAndRadius" parameterType="org.obsidian.tcsp.vo.PositionAndRadius" resultMap="BaseResultMapEx">
+    SELECT longitude,latitude,AVG(score) score FROM routepoint,user_routepoint_score
+    WHERE routepoint.id = user_routepoint_score.routepoint_id
+    GROUP BY routepoint.id
+  </select>
 </mapper>

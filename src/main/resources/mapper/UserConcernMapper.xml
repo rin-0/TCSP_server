@@ -138,4 +138,29 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
+  <!--Rin-->
+  <select id="selectConcernListByUserId" resultType="org.obsidian.tcsp.vo.ConcernUser">
+SELECT user.id,user.user_name,count(*) concern_num FROM user,user_concern
+INNER JOIN user_concern inner_cnt
+WHERE user_concern.self_user_id = #{userId} AND user_concern.concern_user_id = user.id
+AND inner_cnt.concern_user_id = user.id
+GROUP BY inner_cnt.concern_user_id
+  </select>
+  <select id="selectBigV" resultType="org.obsidian.tcsp.vo.ConcernUser">
+SELECT inner_table.*,count(*) concern_num FROM
+  (SELECT user.id,user.user_name FROM user,user_concern
+WHERE user_concern.concern_user_id = user.id) AS inner_table
+GROUP BY id
+ORDER BY concern_num DESC
+LIMIT 100
+  </select>
+  <select id="selectBigVByName" resultType="org.obsidian.tcsp.vo.ConcernUser">
+    <bind name="userName" value="'%' + _parameter + '%'" />
+SELECT user.id,user.user_name,(SELECT count(*) FROM user_concern WHERE user.id=user_concern.concern_user_id) concern_num
+FROM user
+WHERE user.user_name LIKE #{userName}
+ORDER BY concern_num DESC
+LIMIT 100
+  </select>
 </mapper>

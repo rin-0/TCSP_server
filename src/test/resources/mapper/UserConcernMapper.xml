@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.obsidian.tcsp.dao.UserConcernMapper">
   <resultMap id="BaseResultMap" type="org.obsidian.tcsp.model.UserConcern">
-    <result column="selfUserId" jdbcType="INTEGER" property="selfuserid" />
-    <result column="concernUserId" jdbcType="INTEGER" property="concernuserid" />
+    <result column="self_user_id" jdbcType="INTEGER" property="selfUserId" />
+    <result column="concern_user_id" jdbcType="INTEGER" property="concernUserId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    selfUserId, concernUserId
+    self_user_id, concern_user_id
   </sql>
   <select id="selectByExample" parameterType="org.obsidian.tcsp.model.UserConcernExample" resultMap="BaseResultMap">
     select
@@ -88,25 +88,25 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.UserConcern">
-    insert into user_concern (selfUserId, concernUserId)
-    values (#{selfuserid,jdbcType=INTEGER}, #{concernuserid,jdbcType=INTEGER})
+    insert into user_concern (self_user_id, concern_user_id)
+    values (#{selfUserId,jdbcType=INTEGER}, #{concernUserId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.obsidian.tcsp.model.UserConcern">
     insert into user_concern
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="selfuserid != null">
-        selfUserId,
+      <if test="selfUserId != null">
+        self_user_id,
       </if>
-      <if test="concernuserid != null">
-        concernUserId,
+      <if test="concernUserId != null">
+        concern_user_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="selfuserid != null">
-        #{selfuserid,jdbcType=INTEGER},
+      <if test="selfUserId != null">
+        #{selfUserId,jdbcType=INTEGER},
       </if>
-      <if test="concernuserid != null">
-        #{concernuserid,jdbcType=INTEGER},
+      <if test="concernUserId != null">
+        #{concernUserId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -119,11 +119,11 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user_concern
     <set>
-      <if test="record.selfuserid != null">
-        selfUserId = #{record.selfuserid,jdbcType=INTEGER},
+      <if test="record.selfUserId != null">
+        self_user_id = #{record.selfUserId,jdbcType=INTEGER},
       </if>
-      <if test="record.concernuserid != null">
-        concernUserId = #{record.concernuserid,jdbcType=INTEGER},
+      <if test="record.concernUserId != null">
+        concern_user_id = #{record.concernUserId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -132,10 +132,35 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user_concern
-    set selfUserId = #{record.selfuserid,jdbcType=INTEGER},
-      concernUserId = #{record.concernuserid,jdbcType=INTEGER}
+    set self_user_id = #{record.selfUserId,jdbcType=INTEGER},
+      concern_user_id = #{record.concernUserId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
+  <!--Rin-->
+  <select id="selectConcernListByUserId" resultType="org.obsidian.tcsp.vo.ConcernUser">
+SELECT user.id,user.user_name,count(*) concern_num FROM user,user_concern
+INNER JOIN user_concern inner_cnt
+WHERE user_concern.self_user_id = #{userId} AND user_concern.concern_user_id = user.id
+AND inner_cnt.concern_user_id = user.id
+GROUP BY inner_cnt.concern_user_id
+  </select>
+  <select id="SelectBigV" resultType="org.obsidian.tcsp.vo.ConcernUser">
+SELECT inner_table.*,count(*) concern_num FROM
+  (SELECT user.id,user.user_name FROM user,user_concern
+WHERE user_concern.concern_user_id = user.id) AS inner_table
+GROUP BY id
+ORDER BY concern_num DESC
+LIMIT 100
+  </select>
+  <select id="SelectBigVByName" resultType="org.obsidian.tcsp.vo.ConcernUser">
+    <bind name="userName" value="'%' + _parameter + '%'" />
+SELECT user.id,user.user_name,(SELECT count(*) FROM user_concern WHERE user.id=user_concern.concern_user_id) concern_num
+FROM user
+WHERE user.user_name LIKE #{userName}
+ORDER BY concern_num DESC
+LIMIT 100
+  </select>
 </mapper>

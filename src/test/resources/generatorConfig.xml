@@ -62,6 +62,8 @@
         <table tableName="user_routepoint_score"
                enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="false"/>
-
+        <table tableName="manage"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>

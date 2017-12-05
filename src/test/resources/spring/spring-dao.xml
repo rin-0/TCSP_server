@@ -41,6 +41,6 @@
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="rinworks.sy4.dao"/>
+        <property name="basePackage" value="org.obsidian.tcsp.dao"/>
     </bean>
 </beans>

@@ -3,8 +3,8 @@
 <mapper namespace="org.obsidian.tcsp.dao.UserRoutepointCommentMapper">
   <resultMap id="BaseResultMap" type="org.obsidian.tcsp.model.UserRoutepointComment">
     <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="userId" jdbcType="INTEGER" property="userid" />
-    <result column="routePointId" jdbcType="INTEGER" property="routepointid" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="routepoint_id" jdbcType="INTEGER" property="routepointId" />
     <result column="time" jdbcType="BIGINT" property="time" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.obsidian.tcsp.model.UserRoutepointComment">
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, routePointId, time
+    id, user_id, routepoint_id, time
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -113,9 +113,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.UserRoutepointComment">
-    insert into user_routepoint_comment (id, userId, routePointId, 
+    insert into user_routepoint_comment (id, user_id, routepoint_id, 
       time, content)
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{routepointid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{routepointId,jdbcType=INTEGER}, 
       #{time,jdbcType=BIGINT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.obsidian.tcsp.model.UserRoutepointComment">
@@ -124,11 +124,11 @@
       <if test="id != null">
         id,
       </if>
-      <if test="userid != null">
-        userId,
+      <if test="userId != null">
+        user_id,
       </if>
-      <if test="routepointid != null">
-        routePointId,
+      <if test="routepointId != null">
+        routepoint_id,
       </if>
       <if test="time != null">
         time,
@@ -141,11 +141,11 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null">
-        #{userid,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
-      <if test="routepointid != null">
-        #{routepointid,jdbcType=INTEGER},
+      <if test="routepointId != null">
+        #{routepointId,jdbcType=INTEGER},
       </if>
       <if test="time != null">
         #{time,jdbcType=BIGINT},
@@ -167,11 +167,11 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.userid != null">
-        userId = #{record.userid,jdbcType=INTEGER},
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.routepointid != null">
-        routePointId = #{record.routepointid,jdbcType=INTEGER},
+      <if test="record.routepointId != null">
+        routepoint_id = #{record.routepointId,jdbcType=INTEGER},
       </if>
       <if test="record.time != null">
         time = #{record.time,jdbcType=BIGINT},
@@ -187,8 +187,8 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update user_routepoint_comment
     set id = #{record.id,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
-      routePointId = #{record.routepointid,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      routepoint_id = #{record.routepointId,jdbcType=INTEGER},
       time = #{record.time,jdbcType=BIGINT},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -198,8 +198,8 @@
   <update id="updateByExample" parameterType="map">
     update user_routepoint_comment
     set id = #{record.id,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
-      routePointId = #{record.routepointid,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      routepoint_id = #{record.routepointId,jdbcType=INTEGER},
       time = #{record.time,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="org.obsidian.tcsp.model.Route">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="creatorId" jdbcType="INTEGER" property="creatorid" />
+    <result column="creator_id" jdbcType="INTEGER" property="creatorId" />
     <result column="time" jdbcType="BIGINT" property="time" />
-    <result column="coverPic" jdbcType="VARCHAR" property="coverpic" />
+    <result column="cover_pic" jdbcType="VARCHAR" property="coverPic" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, creatorId, time, coverPic
+    id, name, creator_id, time, cover_pic
   </sql>
   <select id="selectByExample" parameterType="org.obsidian.tcsp.model.RouteExample" resultMap="BaseResultMap">
     select
@@ -91,10 +91,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.Route">
-    insert into route (id, name, creatorId, 
-      time, coverPic)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{creatorid,jdbcType=INTEGER}, 
-      #{time,jdbcType=BIGINT}, #{coverpic,jdbcType=VARCHAR})
+    insert into route (id, name, creator_id, 
+      time, cover_pic)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{creatorId,jdbcType=INTEGER}, 
+      #{time,jdbcType=BIGINT}, #{coverPic,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.obsidian.tcsp.model.Route">
     insert into route
@@ -105,14 +105,14 @@
       <if test="name != null">
         name,
       </if>
-      <if test="creatorid != null">
-        creatorId,
+      <if test="creatorId != null">
+        creator_id,
       </if>
       <if test="time != null">
         time,
       </if>
-      <if test="coverpic != null">
-        coverPic,
+      <if test="coverPic != null">
+        cover_pic,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -122,14 +122,14 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="creatorid != null">
-        #{creatorid,jdbcType=INTEGER},
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=INTEGER},
       </if>
       <if test="time != null">
         #{time,jdbcType=BIGINT},
       </if>
-      <if test="coverpic != null">
-        #{coverpic,jdbcType=VARCHAR},
+      <if test="coverPic != null">
+        #{coverPic,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -148,14 +148,14 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.creatorid != null">
-        creatorId = #{record.creatorid,jdbcType=INTEGER},
+      <if test="record.creatorId != null">
+        creator_id = #{record.creatorId,jdbcType=INTEGER},
       </if>
       <if test="record.time != null">
         time = #{record.time,jdbcType=BIGINT},
       </if>
-      <if test="record.coverpic != null">
-        coverPic = #{record.coverpic,jdbcType=VARCHAR},
+      <if test="record.coverPic != null">
+        cover_pic = #{record.coverPic,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -166,9 +166,9 @@
     update route
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      creatorId = #{record.creatorid,jdbcType=INTEGER},
+      creator_id = #{record.creatorId,jdbcType=INTEGER},
       time = #{record.time,jdbcType=BIGINT},
-      coverPic = #{record.coverpic,jdbcType=VARCHAR}
+      cover_pic = #{record.coverPic,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

@@ -3,7 +3,7 @@
 <mapper namespace="org.obsidian.tcsp.dao.PushMapper">
   <resultMap id="BaseResultMap" type="org.obsidian.tcsp.model.Push">
     <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="link" jdbcType="VARCHAR" property="link" />
     <result column="time" jdbcType="BIGINT" property="time" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, title, link, time
+    id, user_id, title, link, time
   </sql>
   <sql id="Blob_Column_List">
     message
@@ -114,10 +114,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.Push">
-    insert into push (id, userId, title, 
+    insert into push (id, user_id, title, 
       link, time, message
       )
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
       #{link,jdbcType=VARCHAR}, #{time,jdbcType=BIGINT}, #{message,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -127,8 +127,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="userid != null">
-        userId,
+      <if test="userId != null">
+        user_id,
       </if>
       <if test="title != null">
         title,
@@ -147,8 +147,8 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null">
-        #{userid,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
@@ -176,8 +176,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.userid != null">
-        userId = #{record.userid,jdbcType=INTEGER},
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
@@ -199,7 +199,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update push
     set id = #{record.id,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       link = #{record.link,jdbcType=VARCHAR},
       time = #{record.time,jdbcType=BIGINT},
@@ -211,7 +211,7 @@
   <update id="updateByExample" parameterType="map">
     update push
     set id = #{record.id,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       link = #{record.link,jdbcType=VARCHAR},
       time = #{record.time,jdbcType=BIGINT}
