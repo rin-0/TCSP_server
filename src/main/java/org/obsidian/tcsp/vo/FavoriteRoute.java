@@ -7,6 +7,7 @@ package org.obsidian.tcsp.vo;
  */
 public class FavoriteRoute {
     Integer id;
+    String creatorName;
     String name;
     //收藏时间
     Long time;
@@ -18,6 +19,14 @@ public class FavoriteRoute {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCreatorName() {
+        return creatorName;
+    }
+
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
 
     public String getName() {

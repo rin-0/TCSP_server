@@ -150,8 +150,9 @@ GROUP BY inner_cnt.concern_user_id
   <select id="selectBigV" resultType="org.obsidian.tcsp.vo.ConcernUser">
 SELECT inner_table.*,count(*) concern_num FROM
   (SELECT user.id,user.user_name FROM user,user_concern
-WHERE user_concern.concern_user_id = user.id) AS inner_table
+WHERE user_concern.concern_user_id = user.id ) AS inner_table
 GROUP BY id
+HAVING id NOT IN (SELECT uc.concern_user_id FROM user_concern uc WHERE uc.self_user_id=#{userId} UNION SELECT (#{userId}) concern_user_id)
 ORDER BY concern_num DESC
 LIMIT 100
   </select>

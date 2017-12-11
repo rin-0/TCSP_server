@@ -46,8 +46,9 @@ public class ConcernController {
     }
     @ResponseBody
     @RequestMapping(value = "/suggestion/bigVList")
-    public List<ConcernUser> getBigVList(){
-        return concernService.getBigVList();
+    public List<ConcernUser> getBigVList(@CookieValue("token") String tokenStr){
+        Token token = TokenUtil.decryptToken(tokenStr);
+        return concernService.getBigVList(token.getUserId());
     }
 
     @ResponseBody

@@ -22,8 +22,8 @@ public class ConcernService {
         return userConcernMapper.selectConcernListByUserId(userId);
     }
 
-    public List<ConcernUser> getBigVList(){
-        return userConcernMapper.selectBigV();
+    public List<ConcernUser> getBigVList(int userId){
+        return userConcernMapper.selectBigV(userId);
     }
 
     //这个搜索用户功能，结果是按关注人数降序排列的，只显示前100名

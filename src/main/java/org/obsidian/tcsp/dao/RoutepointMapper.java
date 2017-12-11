@@ -18,8 +18,6 @@ public interface RoutepointMapper {
 
     List<Routepoint> selectByExampleWithBLOBs(RoutepointExample example);
 
-    List<RoutepointEx> selectByPositionAndRadius(PositionAndRadius positionAndRadius);
-
     List<Routepoint> selectByExample(RoutepointExample example);
 
     int updateByExampleSelective(@Param("record") Routepoint record, @Param("example") RoutepointExample example);
@@ -27,4 +25,6 @@ public interface RoutepointMapper {
     int updateByExampleWithBLOBs(@Param("record") Routepoint record, @Param("example") RoutepointExample example);
 
     int updateByExample(@Param("record") Routepoint record, @Param("example") RoutepointExample example);
+
+    List<RoutepointEx> selectByPositionAndRadius(PositionAndRadius positionAndRadius);
 }

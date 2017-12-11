@@ -25,5 +25,5 @@ public interface UserConcernMapper {
 
     List<ConcernUser> selectBigVByName(String userName);
 
-    List<ConcernUser> selectBigV();
+    List<ConcernUser> selectBigV(Integer userId);
 }
