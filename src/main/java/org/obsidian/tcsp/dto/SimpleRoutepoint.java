@@ -1,4 +1,4 @@
-package org.obsidian.tcsp.vo;
+package org.obsidian.tcsp.dto;
 
 /**
  * 用于某些只需获取路径点简单信息的地方

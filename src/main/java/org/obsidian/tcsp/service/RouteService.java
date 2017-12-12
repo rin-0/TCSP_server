@@ -7,9 +7,9 @@ import org.obsidian.tcsp.model.Route;
 import org.obsidian.tcsp.model.RouteExample;
 import org.obsidian.tcsp.model.Routepoint;
 import org.obsidian.tcsp.model.RoutepointExample;
-import org.obsidian.tcsp.vo.FavoriteRoute;
-import org.obsidian.tcsp.vo.RouteInfo;
-import org.obsidian.tcsp.vo.SimpleRoutepoint;
+import org.obsidian.tcsp.dto.FavoriteRoute;
+import org.obsidian.tcsp.dto.RouteInfo;
+import org.obsidian.tcsp.dto.SimpleRoutepoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package org.obsidian.tcsp.vo.response;
+package org.obsidian.tcsp.dto.response;
 
 /**
  * @Author Rin

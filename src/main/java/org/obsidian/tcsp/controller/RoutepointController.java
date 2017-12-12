@@ -1,7 +1,7 @@
 package org.obsidian.tcsp.controller;
 
 import org.obsidian.tcsp.service.RoutepointService;
-import org.obsidian.tcsp.vo.response.RoutepointListResponse;
+import org.obsidian.tcsp.dto.response.RoutepointListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

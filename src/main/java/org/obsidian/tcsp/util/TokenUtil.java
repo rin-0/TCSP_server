@@ -2,7 +2,7 @@ package org.obsidian.tcsp.util;
 
 import com.alibaba.fastjson.JSON;
 import org.obsidian.tcsp.util.security.Cryptor;
-import org.obsidian.tcsp.vo.Token;
+import org.obsidian.tcsp.dto.Token;
 
 /**
  * @Author Rin

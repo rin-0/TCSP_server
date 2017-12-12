@@ -1,4 +1,4 @@
-package org.obsidian.tcsp.vo;
+package org.obsidian.tcsp.dto;
 
 /**
  * 用户的收藏列表里的收藏路径

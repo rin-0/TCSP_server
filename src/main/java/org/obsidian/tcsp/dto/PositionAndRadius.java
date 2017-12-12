@@ -1,4 +1,4 @@
-package org.obsidian.tcsp.vo;
+package org.obsidian.tcsp.dto;
 
 /**
  * 用于Routepoint的数据库查询条件

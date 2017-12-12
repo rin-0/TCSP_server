@@ -153,7 +153,7 @@
   </update>
   
   <!--Rin-->
-  <select id="selectFavoriteRoutesByUserId" resultType="org.obsidian.tcsp.vo.FavoriteRoute">
+  <select id="selectFavoriteRoutesByUserId" resultType="org.obsidian.tcsp.dto.FavoriteRoute">
 SELECT route.id,route.name,route.time,route.cover_pic FROM route,user_route_favorite
 WHERE route.id=user_route_favorite.route_id AND user_route_favorite.user_id=#{userId}
   </select>

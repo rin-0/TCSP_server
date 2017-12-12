@@ -2,9 +2,9 @@ package org.obsidian.tcsp.controller;
 
 import org.obsidian.tcsp.service.ConcernService;
 import org.obsidian.tcsp.util.TokenUtil;
-import org.obsidian.tcsp.vo.ConcernUser;
-import org.obsidian.tcsp.vo.Token;
-import org.obsidian.tcsp.vo.response.Status;
+import org.obsidian.tcsp.dto.ConcernUser;
+import org.obsidian.tcsp.dto.Token;
+import org.obsidian.tcsp.dto.response.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;

@@ -1,9 +1,7 @@
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.obsidian.tcsp.util.TokenUtil;
-import org.obsidian.tcsp.vo.Token;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.obsidian.tcsp.dto.Token;
 
 /**
  * @Author Rin

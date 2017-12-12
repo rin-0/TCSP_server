@@ -1,31 +1,13 @@
-package org.obsidian.tcsp.vo.request;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+package org.obsidian.tcsp.dto.request;
 
 /**
  * @Author Rin
- * @Date 2017/11/29
+ * @Date 2017/12/4
  */
-public class RegisterRequest {
-    @NotNull
-    @Size(min = 2,max=40)
-    String userName;
-
-    @NotNull
-    @Size(min = 2,max=40)
+public class UpdateInfoRequest {
     String password;
-
     String email;
     String tel;
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public String getPassword() {
         return password;

@@ -1,11 +1,9 @@
 package org.obsidian.tcsp.service;
 
 import org.obsidian.tcsp.dao.RoutepointMapper;
-import org.obsidian.tcsp.model.Routepoint;
-import org.obsidian.tcsp.model.RoutepointExample;
-import org.obsidian.tcsp.vo.PositionAndRadius;
-import org.obsidian.tcsp.vo.RoutepointEx;
-import org.obsidian.tcsp.vo.response.RoutepointListResponse;
+import org.obsidian.tcsp.dto.PositionAndRadius;
+import org.obsidian.tcsp.dto.RoutepointEx;
+import org.obsidian.tcsp.dto.response.RoutepointListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

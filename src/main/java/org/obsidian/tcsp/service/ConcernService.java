@@ -3,7 +3,7 @@ package org.obsidian.tcsp.service;
 import org.obsidian.tcsp.dao.UserConcernMapper;
 import org.obsidian.tcsp.model.UserConcern;
 import org.obsidian.tcsp.model.UserConcernExample;
-import org.obsidian.tcsp.vo.ConcernUser;
+import org.obsidian.tcsp.dto.ConcernUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;

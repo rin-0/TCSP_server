@@ -4,7 +4,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.obsidian.tcsp.model.UserConcern;
 import org.obsidian.tcsp.model.UserConcernExample;
-import org.obsidian.tcsp.vo.ConcernUser;
+import org.obsidian.tcsp.dto.ConcernUser;
 
 public interface UserConcernMapper {
     long countByExample(UserConcernExample example);

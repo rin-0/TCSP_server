@@ -233,7 +233,7 @@
   </update>
 
   <!--Rin-->
-  <select id="selectByPositionAndRadius" parameterType="org.obsidian.tcsp.vo.PositionAndRadius" resultType="org.obsidian.tcsp.vo.RoutepointEx">
+  <select id="selectByPositionAndRadius" parameterType="org.obsidian.tcsp.dto.PositionAndRadius" resultType="org.obsidian.tcsp.dto.RoutepointEx">
     SELECT longitude,latitude,AVG(score) score FROM routepoint,user_routepoint_score
     WHERE routepoint.id = user_routepoint_score.routepoint_id
     GROUP BY routepoint.id

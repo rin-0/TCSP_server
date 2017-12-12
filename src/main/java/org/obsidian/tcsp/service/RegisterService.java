@@ -2,14 +2,11 @@ package org.obsidian.tcsp.service;
 
 import org.obsidian.tcsp.dao.UserMapper;
 import org.obsidian.tcsp.model.User;
-import org.obsidian.tcsp.vo.request.LoginRequest;
-import org.obsidian.tcsp.vo.request.RegisterRequest;
-import org.obsidian.tcsp.vo.response.LoginResponse;
+import org.obsidian.tcsp.dto.request.LoginRequest;
+import org.obsidian.tcsp.dto.request.RegisterRequest;
+import org.obsidian.tcsp.dto.response.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.validation.Valid;
 
 /**
  * @Author Rin

@@ -1,7 +1,6 @@
-package org.obsidian.tcsp.vo.response;
+package org.obsidian.tcsp.dto.response;
 
-import org.obsidian.tcsp.model.Routepoint;
-import org.obsidian.tcsp.vo.RoutepointEx;
+import org.obsidian.tcsp.dto.RoutepointEx;
 
 import java.util.List;
 

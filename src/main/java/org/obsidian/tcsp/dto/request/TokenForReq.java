@@ -1,4 +1,4 @@
-package org.obsidian.tcsp.vo.request;
+package org.obsidian.tcsp.dto.request;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

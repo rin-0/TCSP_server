@@ -1,4 +1,4 @@
-package org.obsidian.tcsp.vo;
+package org.obsidian.tcsp.dto;
 
 import org.obsidian.tcsp.model.Routepoint;
 

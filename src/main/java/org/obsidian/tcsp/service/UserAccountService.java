@@ -4,7 +4,7 @@ import org.obsidian.tcsp.dao.UserMapper;
 import org.obsidian.tcsp.model.User;
 import org.obsidian.tcsp.model.UserExample;
 import org.obsidian.tcsp.util.TokenUtil;
-import org.obsidian.tcsp.vo.Token;
+import org.obsidian.tcsp.dto.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

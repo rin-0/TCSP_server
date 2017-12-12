@@ -9,7 +9,7 @@
     <result column="longitude" jdbcType="DOUBLE" property="longitude" />
     <result column="latitude" jdbcType="DOUBLE" property="latitude" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="BaseResultMapEx" type="org.obsidian.tcsp.vo.RoutepointEx">
+  <resultMap extends="BaseResultMap" id="BaseResultMapEx" type="org.obsidian.tcsp.dto.RoutepointEx">
     <result column="score" jdbcType="DOUBLE" property="score" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.obsidian.tcsp.model.Routepoint">
@@ -236,7 +236,7 @@
   </update>
 
   <!--Rin-->
-  <select id="selectByPositionAndRadius" parameterType="org.obsidian.tcsp.vo.PositionAndRadius" resultMap="BaseResultMapEx">
+  <select id="selectByPositionAndRadius" parameterType="org.obsidian.tcsp.dto.PositionAndRadius" resultMap="BaseResultMapEx">
     SELECT longitude,latitude,AVG(score) score FROM routepoint,user_routepoint_score
     WHERE routepoint.id = user_routepoint_score.routepoint_id
     GROUP BY routepoint.id

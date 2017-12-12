@@ -4,7 +4,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.obsidian.tcsp.model.UserRouteFavorite;
 import org.obsidian.tcsp.model.UserRouteFavoriteExample;
-import org.obsidian.tcsp.vo.FavoriteRoute;
+import org.obsidian.tcsp.dto.FavoriteRoute;
 
 public interface UserRouteFavoriteMapper {
     long countByExample(UserRouteFavoriteExample example);

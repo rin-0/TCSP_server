@@ -4,8 +4,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.obsidian.tcsp.model.Routepoint;
 import org.obsidian.tcsp.model.RoutepointExample;
-import org.obsidian.tcsp.vo.PositionAndRadius;
-import org.obsidian.tcsp.vo.RoutepointEx;
+import org.obsidian.tcsp.dto.PositionAndRadius;
+import org.obsidian.tcsp.dto.RoutepointEx;
 
 public interface RoutepointMapper {
     long countByExample(RoutepointExample example);

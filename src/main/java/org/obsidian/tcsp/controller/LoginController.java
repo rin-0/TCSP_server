@@ -1,9 +1,9 @@
 package org.obsidian.tcsp.controller;
 
 import org.obsidian.tcsp.service.LoginService;
-import org.obsidian.tcsp.vo.request.TokenForReq;
-import org.obsidian.tcsp.vo.response.LoginResponse;
-import org.obsidian.tcsp.vo.request.LoginRequest;
+import org.obsidian.tcsp.dto.request.TokenForReq;
+import org.obsidian.tcsp.dto.response.LoginResponse;
+import org.obsidian.tcsp.dto.request.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
