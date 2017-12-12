@@ -38,12 +38,12 @@
         <!--<table tableName="user"-->
                <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
                <!--enableSelectByExample="true" selectByExampleQueryId="false"/>-->
-        <table tableName="route"
-               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" selectByExampleQueryId="false"/>
-        <table tableName="routepoint"
-               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" selectByExampleQueryId="false"/>
+        <!--<table tableName="route"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" selectByExampleQueryId="false"/>-->
+        <!--<table tableName="routepoint"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" selectByExampleQueryId="false"/>-->
         <!--<table tableName="push"-->
                <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
                <!--enableSelectByExample="true" selectByExampleQueryId="false"/>-->
@@ -56,9 +56,9 @@
         <!--<table tableName="user_route_favorite"-->
                <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
                <!--enableSelectByExample="true" selectByExampleQueryId="false"/>-->
-        <!--<table tableName="user_routepoint_comment"-->
-               <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
-               <!--enableSelectByExample="true" selectByExampleQueryId="false"/>-->
+        <table tableName="user_routepoint_comment"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="false"/>
         <!--<table tableName="user_routepoint_score"-->
                <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
                <!--enableSelectByExample="true" selectByExampleQueryId="false"/>-->

@@ -27,8 +27,8 @@ public interface RoutepointMapper {
 
     int updateByExample(@Param("record") Routepoint record, @Param("example") RoutepointExample example);
 
-    @Select("SELECT longitude,latitude,AVG(score) score FROM routepoint,user_routepoint_score\n" +
-            "    WHERE routepoint.id = user_routepoint_score.routepoint_id\n" +
+    @Select("SELECT longitude,latitude,AVG(score) score FROM routepoint,user_routepoint_comment\n" +
+            "    WHERE routepoint.id = user_routepoint_comment.routepoint_id\n" +
             "    GROUP BY routepoint.id")
     List<RoutepointEx> selectByPositionAndRadius(PositionAndRadius positionAndRadius);
 }

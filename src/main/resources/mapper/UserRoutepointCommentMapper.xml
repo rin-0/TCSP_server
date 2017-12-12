@@ -5,6 +5,7 @@
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="routepoint_id" jdbcType="INTEGER" property="routepointId" />
+    <result column="score" jdbcType="INTEGER" property="score" />
     <result column="time" jdbcType="BIGINT" property="time" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.obsidian.tcsp.model.UserRoutepointComment">
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, routepoint_id, time
+    id, user_id, routepoint_id, score, time
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -114,9 +115,11 @@
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.UserRoutepointComment">
     insert into user_routepoint_comment (id, user_id, routepoint_id, 
-      time, content)
+      score, time, content
+      )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{routepointId,jdbcType=INTEGER}, 
-      #{time,jdbcType=BIGINT}, #{content,jdbcType=LONGVARCHAR})
+      #{score,jdbcType=INTEGER}, #{time,jdbcType=BIGINT}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.obsidian.tcsp.model.UserRoutepointComment">
     insert into user_routepoint_comment
@@ -129,6 +132,9 @@
       </if>
       <if test="routepointId != null">
         routepoint_id,
+      </if>
+      <if test="score != null">
+        score,
       </if>
       <if test="time != null">
         time,
@@ -146,6 +152,9 @@
       </if>
       <if test="routepointId != null">
         #{routepointId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
       </if>
       <if test="time != null">
         #{time,jdbcType=BIGINT},
@@ -173,6 +182,9 @@
       <if test="record.routepointId != null">
         routepoint_id = #{record.routepointId,jdbcType=INTEGER},
       </if>
+      <if test="record.score != null">
+        score = #{record.score,jdbcType=INTEGER},
+      </if>
       <if test="record.time != null">
         time = #{record.time,jdbcType=BIGINT},
       </if>
@@ -189,6 +201,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       routepoint_id = #{record.routepointId,jdbcType=INTEGER},
+      score = #{record.score,jdbcType=INTEGER},
       time = #{record.time,jdbcType=BIGINT},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -200,6 +213,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       routepoint_id = #{record.routepointId,jdbcType=INTEGER},
+      score = #{record.score,jdbcType=INTEGER},
       time = #{record.time,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

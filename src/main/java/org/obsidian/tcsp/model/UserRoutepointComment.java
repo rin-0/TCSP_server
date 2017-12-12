@@ -7,6 +7,8 @@ public class UserRoutepointComment {
 
     private Integer routepointId;
 
+    private Integer score;
+
     private Long time;
 
     private String content;
@@ -33,6 +35,14 @@ public class UserRoutepointComment {
 
     public void setRoutepointId(Integer routepointId) {
         this.routepointId = routepointId;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
     }
 
     public Long getTime() {
