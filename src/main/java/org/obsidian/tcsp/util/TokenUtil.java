@@ -14,8 +14,12 @@ public class TokenUtil {
         return Cryptor.encrypt(tokenStr);
     }
     public static Token decryptToken(String encryptedToken){
-        String decryptedToken = Cryptor.decrypt(encryptedToken);
-        Token token = JSON.parseObject(decryptedToken,Token.class);
-        return token;
+        try {
+            String decryptedToken = Cryptor.decrypt(encryptedToken);
+            Token token = JSON.parseObject(decryptedToken,Token.class);
+            return token;
+        }catch (Exception e){
+            return null;
+        }
     }
 }

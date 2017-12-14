@@ -31,4 +31,10 @@ public interface RoutepointMapper {
             "    WHERE routepoint.id = user_routepoint_comment.routepoint_id\n" +
             "    GROUP BY routepoint.id")
     List<RoutepointEx> selectByPositionAndRadius(PositionAndRadius positionAndRadius);
+
+    @Select("SELECT routepoint.*,\n" +
+            "  (SELECT count(*) FROM user_routepoint_comment c1 WHERE c1.routepoint_id=routepoint.id) comment_num,\n" +
+            "  (SELECT AVG(c2.score) FROM user_routepoint_comment c2 WHERE c2.routepoint_id=routepoint.id) score\n" +
+            "FROM routepoint WHERE routepoint.id=#{id}")
+    List<RoutepointEx> selectDetailById(Integer id);
 }

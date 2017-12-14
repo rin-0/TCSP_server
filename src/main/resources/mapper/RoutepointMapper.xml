@@ -115,8 +115,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.obsidian.tcsp.model.Routepoint">
-    insert into routepoint (id, "index", route_id,
-      name, longitude, latitude, 
+    insert into routepoint (id, `index`, route_id,
+      `name`, longitude, latitude,
       feel)
     values (#{id,jdbcType=INTEGER}, #{index,jdbcType=INTEGER}, #{routeId,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, 
@@ -129,13 +129,13 @@
         id,
       </if>
       <if test="index != null">
-        "index",
+        `index`,
       </if>
       <if test="routeId != null">
         route_id,
       </if>
       <if test="name != null">
-        name,
+        `name`,
       </if>
       <if test="longitude != null">
         longitude,

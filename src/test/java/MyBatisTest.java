@@ -1,9 +1,7 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.obsidian.tcsp.dao.UserConcernMapper;
-import org.obsidian.tcsp.dao.UserRouteFavoriteMapper;
-import org.obsidian.tcsp.dto.ConcernUser;
-import org.obsidian.tcsp.dto.FavoriteRoute;
+import org.obsidian.tcsp.dao.*;
+import org.obsidian.tcsp.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -21,6 +19,12 @@ public class MyBatisTest {
     UserRouteFavoriteMapper userRouteFavoriteMapper;
     @Autowired
     UserConcernMapper userConcernMapper;
+    @Autowired
+    RoutepointMapper routepointMapper;
+    @Autowired
+    UserRoutepointCommentMapper userRoutepointCommentMapper;
+    @Autowired
+    RouteMapper routeMapper;
 
     @Test
     public void testUserRouteFavoriteMapper(){
@@ -32,5 +36,21 @@ public class MyBatisTest {
     public void testSearchBigVByName(){
         List<ConcernUser> concernUserList = userConcernMapper.selectBigVByName("a");
         System.out.println(concernUserList);
+    }
+
+    @Test
+    public void testRoutepointDetail(){
+        List<RoutepointEx> routepointExList = routepointMapper.selectDetailById(1);
+        System.out.println(routepointExList);
+    }
+
+    @Test
+    public void testCommentEx(){
+        List<CommentEx> list = userRoutepointCommentMapper.selectExByRoutepointId(1);
+    }
+
+    @Test
+    public void testSuggestRouteByAverageScoreAndPosition(){
+        List<RouteIdAndScore> list= routeMapper.suggestRoute(new PositionAndRadius(30,120,5));
     }
 }

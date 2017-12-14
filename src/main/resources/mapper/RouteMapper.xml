@@ -96,7 +96,11 @@
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{creatorId,jdbcType=INTEGER}, 
       #{time,jdbcType=BIGINT}, #{coverPic,jdbcType=VARCHAR})
   </insert>
+  <!--返回值为主键-->
   <insert id="insertSelective" parameterType="org.obsidian.tcsp.model.Route">
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into route
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

@@ -57,6 +57,11 @@
       <param-name>contextConfigLocation</param-name>
       <param-value>classpath:spring/spring-web.xml</param-value>
     </init-param>
+    <multipart-config>
+      <!--<location>D:/uploadtest</location>-->
+      <max-file-size>64000000</max-file-size>
+      <max-request-size>64000000</max-request-size>
+    </multipart-config>
   </servlet>
 
   <servlet-mapping>
